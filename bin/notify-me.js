@@ -10,6 +10,7 @@ var app = http.createServer(function(req, res) {
         var query = parsedUrl.query;
         var cocoa_cmd = parsedUrl.pathname.split('/')[1];
         
+        console.log(req.url);
         console.log(cocoa_cmd, query);
         var cmd = "/Applications/CocoaDialog.app/Contents/MacOS/CocoaDialog " + cocoa_cmd;
         for (var k in query) {
@@ -34,4 +35,6 @@ var app = http.createServer(function(req, res) {
         res.end('OK\n');
 });
 
-app.listen(3000);
+port = process.env.NOTIFYMEPORT || 3000;
+app.listen(port);
+console.log('Running notify-me.js on port ' + port);
