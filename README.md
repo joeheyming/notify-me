@@ -58,3 +58,5 @@ But a popup would be much better at getting my attention.
 ## TODO
 Figure out how to add some sort of authentication to this so that you can only get messages from yourself
   or an authorized process.
+
+![notify-me Notify me in Action](/joeheyming/notify-me/notify-me-in-action.png)
