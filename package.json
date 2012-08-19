@@ -1,0 +1,25 @@
+{
+  "name": "notify-me",
+  "description": "Send notifications over http to your Mac",
+  "version": "1.0",
+  "author": "Joe Heyming<joeheyming@gmail.com>",
+  "contributors": [ 
+    { "name": "Joe Heyming", "email": "joeheyming@gmail.com" }, 
+  ],
+  "dependencies": {    
+  },
+  "devDependencies": {
+  },
+  "keywords": [
+    "notification",
+    "http",
+    "macbook",
+  ],
+  "publishConfig": { "tag": "1.0" },
+  "repository": "git://github.com/joeheyming/notifyme",
+  "main": "index",
+  "bin": { "notify-me": "./bin/notify-me" },
+  "scripts": {
+  },
+  "engines": { "node": "*" }
+}
