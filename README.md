@@ -13,21 +13,28 @@ Install node.js.  This can easily be done with macports:
     $ sudo port install nodejs
 
 Run make:
+```bash
     $ make install
+```
 
 ## Running
 To run the application you can find it in the bin directory:
+```bash
     $ ./bin/notify-me.js
     Running notify-me.js on port 3000
+```
 
 If you want to run on a differnt port use the NOTIFYMEPORT environment variable:
+```bash
     $ export NOTIFYMEPORT=4000
     $ ./bin/notify-me.js
     Running notify-me.js on port 4000
+```
 
 Then run an http request to the server:
+```bash
     $ curl "localhost:3000/bubble?title=hello&text=world"
-
+```
 The path is the type of dialog you want to display.  There are many different dialogs found in the CocoaDialog documentation.
 
 The query strings translate to command line arguments to the CocoaDialog binary.
@@ -41,8 +48,9 @@ I created an example script to help you get started under ./bin/notify-example.s
 The main idea for this script was so that you could have a long running process and when it is finished, it pops up a message to you while you are browsing the internet or reading emails.
 
 For example:
-  make; curl -G --data-urlencode "title=Build complete" --data-urlencode "text=`date`" 1.2.3.4:3000/ok-msgbox
-
+```bash
+    $ make; curl -G --data-urlencode "title=Build complete" --data-urlencode "text=`date`" 1.2.3.4:3000/ok-msgbox
+```
 Would notify me when the build was complete while I was surfing the internet at work.
 I feel this is better than just sending myself an email because I might not be looking at email.
 But a popup would be much better at getting my attention.
