@@ -60,13 +60,28 @@ Would notify me when the build was complete while I was surfing the internet at 
 I feel this is better than just sending myself an email because I might not be looking at email.
 But a popup would be much better at getting my attention.
 
-## TODO
-Figure out how to add some sort of authentication to this so that you can only get messages from yourself
-  or an authorized process.  I'm thinking of using certificates.  Where you have to say:
+## HTTPS
+If you want more security around running these commands, you can genearte a private key and a certificate to use with curl:
 ```bash
-curl -v -s -k --key ssl/client.key --cert ssl/client.crt https://localhost:5678/...  
+        $ openssl genrsa -out privatekey.pem 1024 
+        $ openssl req -new -key privatekey.pem -out certrequest.csr 
+        $ openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem
+        
+        # Then you need to set these environment variables:
+        $ export NOTIFYMEKEY=path/to/privatekey.pm
+        $ export NOTIFYMECERT=path/to/certificate.pem
+        
+        # Then restart notify-me.js
+        $ notify-me.jss
+        Reading in https certs
+        Running notify-me.js on port 3000
+
+        # Then when you run curl:
+        $ curl -v -s -k --key privatekey.pem --cert certificate.pem 'https://localhost:3000/bubble?title=hello&text=world'
+
 ```
-Is this a good approach?
+
+I don't claim to be a security expert, but I hope this is good enough to prevent people from getting spammed..
 
 ## Screenshot
 ![notify-me Notify me in Action](/joeheyming/notify-me/blob/master/notify-me-in-action.png?raw=true)

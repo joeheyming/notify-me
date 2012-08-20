@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
 var http = require('http');
-var url = require('url');
-var sys = require('util'),
+var https = require('https'),
+    fs = require('fs'),
+    url = require('url'),
+    sys = require('util'),
     exec = require('child_process').exec;
 
-var app = http.createServer(function(req, res) {
+var handler = function(req, res) {
         var parsedUrl = url.parse(req.url, true);
         var query = parsedUrl.query;
         var cocoa_cmd = parsedUrl.pathname.split('/')[1];
@@ -33,8 +35,25 @@ var app = http.createServer(function(req, res) {
                      );  
         res.writeHead(200);
         res.end('OK\n');
-});
+};
 
-port = process.env.NOTIFYMEPORT || 3000;
-app.listen(port);
+var server;
+var cert = process.env.NOTIFYMECERT,
+    key = process.env.NOTIFYMEKEY;
+if (cert && key) {
+   key = fs.readFileSync(key);
+   cert = fs.readFileSync(cert);
+   console.log('Reading in https certs');
+   var options = { 
+     key: key, 
+     cert: cert
+   };
+   server = https.createServer(options, handler);
+} else {
+ server = http.createServer(handler);
+}
+server.addListener('request', handler);
+
+var port = process.env.NOTIFYMEPORT || 3000;
+server.listen(port);
 console.log('Running notify-me.js on port ' + port);
