@@ -85,3 +85,14 @@ I don't claim to be a security expert, but I hope this is good enough to prevent
 
 ## Screenshot
 ![notify-me Notify me in Action](/joeheyming/notify-me/blob/master/notify-me-in-action.png?raw=true)
+
+## Curl usage
+The best results I've seen with curl are to urlencode your data with a get request:
+```bash
+    $ curl -G --data-urlencode "title=My title!!!" --data-url-encode "text=Lorem ipsum dolor sit amet." localhost:3000/ok-msgbox
+```
+If you want to cram the query parameters all on one line, you should put quotes around the url and make sure to encode any spaces
+```bash
+    $ curl 'localhost:3000/yesno-msgbox?title=Wheres%20the%20beef%3F&text=Do%20you%20like%20beef%3F'
+```
+Also be mindful that I don't allow single quotes in the value portion.
