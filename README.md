@@ -61,7 +61,7 @@ I feel this is better than just sending myself an email because I might not be l
 But a popup would be much better at getting my attention.
 
 ## HTTPS
-If you want more security around running these commands, you can genearte a private key and a certificate to use with curl:
+If you want more "security" around running these commands, you can genearte a private key and a certificate to use with curl:
 ```bash
         $ openssl genrsa -out privatekey.pem 1024 
         $ openssl req -new -key privatekey.pem -out certrequest.csr 
