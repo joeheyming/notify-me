@@ -72,7 +72,7 @@ If you want more security around running these commands, you can genearte a priv
         $ export NOTIFYMECERT=path/to/certificate.pem
         
         # Then restart notify-me.js
-        $ notify-me.jss
+        $ notify-me.js
         Reading in https certs
         Running notify-me.js on port 3000
 
