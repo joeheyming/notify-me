@@ -10,7 +10,9 @@ It might be useful to read a few of the [examples](http://mstratman.github.com/c
 
 ## Installation
 Install node.js.  This can easily be done with macports:
+```bash
     $ sudo port install nodejs
+```
 
 Run make:
 ```bash
