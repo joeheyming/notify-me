@@ -51,7 +51,10 @@ The main idea for this script was so that you could have a long running process 
 
 For example:
 ```bash
-    $ make; curl -G --data-urlencode "title=Build complete" --data-urlencode "text=`date`" 1.2.3.4:3000/ok-msgbox
+    $ make && all-okay || oh-no-build-failed
+    # where all-okay or oh-no-build-failed map to some alias/bash function: 
+    #   curl -G --data-urlencode "title=Build complete" --data-urlencode "text=`date`" 1.2.3.4:3000/ok-msgbox
+    
 ```
 Would notify me when the build was complete while I was surfing the internet at work.
 I feel this is better than just sending myself an email because I might not be looking at email.
@@ -59,7 +62,11 @@ But a popup would be much better at getting my attention.
 
 ## TODO
 Figure out how to add some sort of authentication to this so that you can only get messages from yourself
-  or an authorized process.
+  or an authorized process.  I'm thinking of using certificates.  Where you have to say:
+```bash
+curl -v -s -k --key ssl/client.key --cert ssl/client.crt https://localhost:5678/...  
+```
+Is this a good approach?
 
 ## Screenshot
 ![notify-me Notify me in Action](/joeheyming/notify-me/blob/master/notify-me-in-action.png?raw=true)
