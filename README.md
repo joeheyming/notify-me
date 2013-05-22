@@ -84,7 +84,7 @@ If you want more "security" around running these commands, you can genearte a pr
 I don't claim to be a security expert, but I hope this is good enough to prevent people from getting spammed..
 
 ## Screenshot
-![notify-me Notify me in Action](/joeheyming/notify-me/master/notify-me-in-action.png?raw=true)
+![notify-me Notify me in Action](https://raw.github.com/joeheyming/notify-me/master/notify-me-in-action.png?raw=true)
 
 ## Curl usage
 The best results I've seen with curl are to urlencode your data with a get request:
